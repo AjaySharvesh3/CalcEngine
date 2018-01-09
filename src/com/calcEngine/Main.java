@@ -7,7 +7,30 @@ public class Main {
     public static void main(String[] args) {
         // write your code here
        // calc();
-        calcWithArrayLoop();
+        //public double leftVals;
+        //public double rightVals;
+        //public char opCodes;
+        //public double results;
+
+        MathEquation[] equations = new MathEquation[4];
+        equations[0] = create(100.0d, 50.0d, 'd');
+        equations[1] = create(101.0d, 51.0d, 'a');
+        equations[2] = create(102.0d, 52.0d, 's');
+        equations[3] = create(103.0d, 53.0d, 'm');
+
+        for(MathEquation equation : equations) {
+            System.out.println("result = ");
+            System.out.println(equation.getResults());
+        }
+    }
+
+    public static MathEquation create(double leftVals, double rightVals, char opCodes) {
+        MathEquation equation = new MathEquation();
+        equation.setLeftVals(leftVals);
+        equation.setRightVals(rightVals);
+        equation.setOpCodes(opCodes);
+        return equation;
+    }
     }
 
     /**
@@ -37,75 +60,4 @@ public class Main {
      * <p>
      * }
      */
-    public static void calc() {
-        double val1 = 100.0d, val2 = 0.0d, result;
-        char opCode = 'd';
 
-        if (opCode == 'a') {
-            result = val1 + val2;
-            System.out.println(result);
-        } else if (opCode == 's') {
-            result = val1 - val2;
-            System.out.println(result);
-        } else if (opCode == 'd') {
-
-            result = val1 != 0.0d ? val1 / val2 : 0.0d;
-            System.out.println(result);
-            result = val1 * val2;
-            System.out.println(result);
-        } else if (opCode == 'm') {
-            result = val1 / val2;
-            System.out.println(result);
-        } else if (opCode == 'p') {
-            result = val1 % val2;
-            System.out.println(result);
-        } else {
-            System.out.println("Invalid Code");
-            result = 0.0d;
-            System.out.println(result);
-        }
-    }
-
-    public static void calcWithArrayLoop() {
-        double[] leftVals = {100.0d, 200.0d, 50.0d, 25.0d};
-        double[] rightVals = {100.0d, 200.0d, 50.0d, 25.0d};
-        char[] opCodes = {'a', 's', 'm', 'd'};
-        double[] results = new double[opCodes.length];
-
-        for (int i = 0; i <opCodes.length; i++){
-            switch (opCodes[i]) {
-                case'a':
-                    results[i] = leftVals[i] + rightVals[i];
-                    System.out.println(results);
-                    break;
-                case 's':
-                    results[i] = leftVals[i] - rightVals[i];
-                    System.out.println(results);
-                    break;
-                case 'd':
-                    results[i] = leftVals[i] != 0.0d ? leftVals[i] / rightVals[i] : 0.0d;
-                    System.out.println(results);
-                    results[i] = leftVals[i] * rightVals[i];
-                    System.out.println(results);
-                    break;
-                case 'm':
-                    results[i] = leftVals[i] / rightVals[i];
-                    System.out.println(results);
-                    break;
-                case 'p':
-                    results[i] = leftVals[i] % rightVals[i];
-                    System.out.println(results);
-                    break;
-                default:
-                    System.out.println("Invalid Code");
-                    results[i] = 0.0d;
-                }
-            }
-        }
-        for(double theResult: results) {
-            System.out.println("result = ");
-            System.out.println(theResult);
-
-    }
-    }
-    }
